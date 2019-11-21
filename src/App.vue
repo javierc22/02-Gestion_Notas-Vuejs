@@ -1,6 +1,16 @@
 <template>
   <div id="app">
-    <h3>{{ msg }}</h3>
+    <h3>{{ titulo }}</h3>
+    <div class="form">
+      <div class="form-group">
+        <label>Título</label>
+        <input type="text" class="form-control" v-model="nota.titulo">
+      </div>
+      <div class="form-group">
+        <label>Texto</label>
+        <textarea class="form-control" v-model="nota.texto"></textarea>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -9,7 +19,11 @@ export default {
   name: "app",
   data() {
     return {
-      msg: "Hola Mundo pendejos! :v"
+      titulo: 'Gestión de notas',
+      nota: {
+        titulo:'',
+        texto:''
+      }
     };
   }
 };
@@ -21,5 +35,9 @@ export default {
     text-align: center;
     color: #2C3E50;
     margin: 20px;
+  }
+
+  .form{
+    text-align: left;
   }
 </style>
