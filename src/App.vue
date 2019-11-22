@@ -14,6 +14,18 @@
         <button class="btn btn-primary" @click="agregarNota">Enviar</button>
       </div>
     </div>
+
+    <div class="col-sm-12">
+      <div class="col-sm-4 nota" v-for="(nota, index) in notas" :key="index">
+        <div class="card">
+          <div class="card-block">
+            <div class="card-title">{{ nota.titulo }}</div>
+            <div class="card-subtitle mb2 text-muted">{{ nota.fecha }}</div>
+            <p class="card-text">{{ nota.texto }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -22,42 +34,54 @@ export default {
   name: "app",
   data() {
     return {
-      titulo: 'Gestión de notas',
+      titulo: "Gestión de notas",
       nota: {
-        titulo:'',
-        texto:''
+        titulo: "",
+        texto: ""
       },
-      notas:[
+      notas: [
         {
-          titulo: 'Ir al cine.',
-          texto: 'Examinar las películas de estreno.',
+          titulo: "Ir al cine.",
+          texto: "Examinar las películas de estreno.",
           fecha: new Date(Date.now()).toLocaleString()
         }
       ]
     };
   },
-  methods:{
-    agregarNota:function () {
+  methods: {
+    agregarNota: function() {
       let { texto, titulo } = this.nota;
       this.notas.push({
         texto,
         titulo,
         fecha: new Date(Date.now()).toLocaleString()
-      })
+      });
     }
   }
 };
 </script>
 
 <style>
-  #app {
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    color: #2C3E50;
-    margin: 20px;
-  }
+#app {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: #2c3e50;
+  margin: 20px;
+}
 
-  .form{
-    text-align: left;
-  }
+.form {
+  text-align: left;
+}
+
+.card {
+  text-align: left;
+  border: 1px solid #2c3e50;
+  border-radius: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.nota {
+  padding: 5px;
+}
 </style>
