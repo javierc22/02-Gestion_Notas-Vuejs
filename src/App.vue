@@ -4,7 +4,7 @@
     <div class="form">
       <div class="form-group">
         <label>Título</label>
-        <input type="text" class="form-control" v-model="nota.titulo">
+        <input type="text" class="form-control" v-model="nota.titulo" />
       </div>
       <div class="form-group">
         <label>Texto</label>
@@ -23,6 +23,7 @@
             <div class="card-subtitle mb2 text-muted">{{ nota.fecha }}</div>
             <p class="card-text">{{ nota.texto }}</p>
           </div>
+          <button class="close" @click="eliminarNota(index)">&times;</button>
         </div>
       </div>
     </div>
@@ -56,6 +57,12 @@ export default {
         titulo,
         fecha: new Date(Date.now()).toLocaleString()
       });
+
+      this.nota.titulo = "";
+      this.nota.texto = "";
+    },
+    eliminarNota: function(index) {
+      this.notas.splice(index, 1);
     }
   }
 };
